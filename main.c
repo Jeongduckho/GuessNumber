@@ -14,11 +14,14 @@ void main() {
 	puts("[6]. 일곱자리수");
 	puts("[7]. 여덟자리수");
 	puts("[8]. 아홉자리수");
-	puts("[0]. 끝내기");
+	puts("[0].        끝내기");
 	puts("-----------------------------");
 	printf(":");
 	scanf("%d", & i);
-	if(i==0) {system("exit");}
+	if (i == 0) {
+		system("exit");
+	}
+        mkrandnum(i);
 
 
 
