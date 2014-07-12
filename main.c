@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <malloc.h>
+#include <time.h>
+#include "func.h"
 void main() {
 	int p /*counting*/
 	, i /*for level*/
@@ -22,6 +25,8 @@ void main() {
 		system("exit");
 	}
         mkrandnum(i);
+        main();
+        return; }
 
 
 
