@@ -3,8 +3,16 @@
 #include <malloc.h>
 #include <time.h>
 #include "func.h"
+int *n=NULL;
+int *user=NULL;
+int onoff=1;
+void relay(int i) {
+	getusernum(i);
+	check(i);
+}
 void main() {
-	int i /*for level*/;
+	int i /*for level*/
+	;
 	puts("난이도를 선택하세요.");
 	puts("-----------------------");
 	puts("[1].    두자리수");
@@ -19,9 +27,16 @@ void main() {
 	puts("----------------------");
 	printf(":");
 	scanf("%d", & i);
-	if (i == 0) { return; }
+	if (i == 0) {
+		return;
+	}
 	mkrandnum(i);
-        getusernum(i);
+	while (onoff) {
+		relay(i);
+	}
+	puts("맞추셨습니다.");
+	free(n);
+	free(user);
 	return;
 }
 
