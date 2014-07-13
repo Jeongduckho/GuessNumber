@@ -12,12 +12,12 @@ void relay(int i) {
 	check(i);
 }
 void main() {
-void submenu();
-extern int count;
+	void submenu();
+	extern int count;
 	int i /*for level*/
 	;
-        puts("");
-        puts("");
+	puts("");
+	puts("");
 	puts("난이도를 선택하세요.");
 	puts("-----------------------");
 	puts("[1].    두자리수");
@@ -37,10 +37,10 @@ extern int count;
 	}
 	mkrandnum(i);
 	while (onoff) {
-                count++;
+		count++;
 		relay(i);
-if(onoff==0) break;
-                submenu(i);
+		if (onoff == 0) break;
+		submenu(i);
 	}
 	printf("%d번 만에 맞추셨습니다.\n", count);
 	free(n);
@@ -48,9 +48,9 @@ if(onoff==0) break;
 	return;
 }
 void submenu(int i) {
-void main();
-int sel;
-        puts("");
+	void main();
+	int sel;
+	puts("");
 	puts("작업을 선택하세요");
 	puts("-----------------------");
 	puts("[1].        계속 진행");
@@ -59,11 +59,13 @@ int sel;
 	puts("----------------------");
 	printf(":");
 	scanf("%d", & sel);
-switch(sel) {
-case 1: break;
-case 2: break; // unsupport
-case 3: main(); break; } }
-
-
-
-
+	switch (sel) {
+		case 1:
+			break;
+		case 2:
+			break; // unsupport
+		case 3:
+			main();
+			break;
+	}
+}
