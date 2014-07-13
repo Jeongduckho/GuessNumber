@@ -6,13 +6,18 @@
 int *n=NULL;
 int *user=NULL;
 int onoff=1;
+int count=0;
 void relay(int i) {
 	getusernum(i);
 	check(i);
 }
 void main() {
+void submenu();
+extern int count;
 	int i /*for level*/
 	;
+        puts("");
+        puts("");
 	puts("난이도를 선택하세요.");
 	puts("-----------------------");
 	puts("[1].    두자리수");
@@ -32,13 +37,33 @@ void main() {
 	}
 	mkrandnum(i);
 	while (onoff) {
+                count++;
 		relay(i);
+if(onoff==0) break;
+                submenu(i);
 	}
-	puts("맞추셨습니다.");
+	printf("%d번 만에 맞추셨습니다.\n", count);
 	free(n);
 	free(user);
 	return;
 }
+void submenu(int i) {
+void main();
+int sel;
+        puts("");
+	puts("작업을 선택하세요");
+	puts("-----------------------");
+	puts("[1].        계속 진행");
+	puts("[2].        기록 보기");
+	puts("[3]. 메인으로 돌아가기");
+	puts("----------------------");
+	printf(":");
+	scanf("%d", & sel);
+switch(sel) {
+case 1: break;
+case 2: break; // unsupport
+case 3: main(); break; } }
+
 
 
 

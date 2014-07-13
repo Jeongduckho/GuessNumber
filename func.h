@@ -18,7 +18,10 @@ void getusernum(int i) {
 	extern int * user;
 	int p, q;
 	user = (int * ) malloc(sizeof(int) * i);
+system("clear");
+puts("");
 	puts("자리수 만큼 한 자리씩 입력해주세요.");
+        puts("---------------------------------");
 	puts("");
 	for (p = 0; p <= i; p++) {
 		printf("%d의 자리 : ", i + 1 - p);
@@ -61,6 +64,7 @@ void check(int i) {
 			}
 		}
 	}
+puts("---------------------------------");
 	printf("결과 : ");
 	if (Scount == 0 & Bcount == 0) {
 		printf("out");
@@ -71,3 +75,4 @@ void check(int i) {
 	}
 	if (Scount == i + 1) onoff = 0;
 }
+
