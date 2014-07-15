@@ -5,17 +5,25 @@
 #include "func.h"
 int *n=NULL;
 int *user=NULL;
+int **recnum=NULL;
+int *recsum=NULL;
 int onoff=1;
+int stop=0;
 int count=0;
+int Scount =NULL;
+int Bcount =NULL;
 void relay(int i) {
 	getusernum(i);
 	check(i);
 }
-void main() {
+int main() {
 	void submenu();
+	extern int * * recnum;
+	extern int * recsum;
 	extern int count;
+	extern int stop;
 	int i /*for level*/
-	;
+	, p;
 	puts("");
 	puts("");
 	puts("난이도를 선택하세요.");
@@ -33,22 +41,39 @@ void main() {
 	printf(":");
 	scanf("%d", & i);
 	if (i == 0) {
-		return;
+		return 0;
 	}
 	mkrandnum(i);
+	recnum = (int * * ) malloc(sizeof(int * ) * (25 * i));
+	recsum = (int * ) malloc(sizeof(int) * (25 * i));
 	while (onoff) {
+		if (stop == 1) {
+			puts("");
+			puts("기록을 다 보셨으면 0을 눌러주세요.");
+			printf(": ");
+			scanf("%d", & stop);
+			system("clear");
+		} else system("clear");
 		count++;
 		relay(i);
 		if (onoff == 0) break;
+		recorder(count, i);
 		submenu(i);
 	}
 	printf("%d번 만에 맞추셨습니다.\n", count);
+	for (p = 0; p <= i; p++); {
+		free(recnum[p]);
+	}
+	free(recnum);
+	free(recsum);
 	free(n);
 	free(user);
 	return;
 }
 void submenu(int i) {
-	void main();
+	extern int count;
+	extern int stop;
+	int main();
 	int sel;
 	puts("");
 	puts("작업을 선택하세요");
@@ -63,7 +88,9 @@ void submenu(int i) {
 		case 1:
 			break;
 		case 2:
-			break; // unsupport
+			stop = 1;
+			history(count, i);
+			break;
 		case 3:
 			main();
 			break;

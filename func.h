@@ -18,7 +18,6 @@ void getusernum(int i) {
 	extern int * user;
 	int p, q;
 	user = (int * ) malloc(sizeof(int) * i);
-	system("clear");
 	puts("");
 	puts("자리수 만큼 한 자리씩 입력해주세요.");
 	puts("---------------------------------");
@@ -53,9 +52,11 @@ void check(int i) {
 	extern int * n;
 	extern int * user;
 	extern int onoff;
+	extern int Scount;
+	extern int Bcount;
+	Scount = 0;
+	Bcount = 0;
 	int p = 0, q = 0;
-	int Scount = 0;
-	int Bcount = 0;
 	for (p = 0; p <= i; p++) {
 		for (q = 0; q <= i; q++) {
 			if (n[p] == user[q]) {
@@ -74,4 +75,35 @@ void check(int i) {
 		puts("");
 	}
 	if (Scount == i + 1) onoff = 0;
+}
+void recorder(int c, int i) {
+	int pack, p;
+	extern int * user;
+	extern int * * recnum;
+	extern int * recsum;
+	extern int Scount, Bcount;
+	recnum[c] = (int * ) malloc(sizeof(int) * i);
+	// record used number
+	for (p = 0; p <= i; p++) {
+		recnum[c][p] = user[p];
+	}
+	// record that time statue
+	pack = (Scount * 10) + Bcount;
+	printf("%d", c);
+	recsum[c] = pack;
+}
+void history(int count, int i) {
+	extern int * * recnum;
+	extern int * recsum;
+	int p, c;
+	for (c = count; c >= 1; c--) {
+		printf("[%d]", c);
+		printf(" | ");
+		for (p = 0; p <= i; p++) {
+			printf("%d", recnum[c][p]);
+		}
+		printf(" | ");
+		printf("%dS %dB", recsum[c] / 10, recsum[c] % 10);
+		puts("");
+	}
 }
